@@ -8,8 +8,8 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "seed": "node ./seedingScript.js",
-    "start": "nodemon ./server/index.js",
+    "seed": "node seedingScript.js",
+    "start": "nodemon server/index.js",
     "build": "webpack --mode=development -d --watch",
     "Pbuild": "webpack --mode=production -d --watch",
     "test": "mocha",

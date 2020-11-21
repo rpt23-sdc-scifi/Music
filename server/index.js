@@ -54,3 +54,8 @@ app.get('/:current', (req, res) => {
 app.listen(port, () => {
   console.log('Server is listening at http://localhost:' + port)
 });
+
+/*
+const router = require('./routes.js');
+app.use('/api', router);
+*/
