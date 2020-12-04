@@ -23,7 +23,8 @@ const { Client } = require('pg')
 const client = new Client({
     user: 'postgres',
     host: 'localhost',
-    database: 'music'
+    database: 'music',
+    port:5432
 });
 client.connect();
 //node-postgress
