@@ -34,6 +34,7 @@ class Player extends React.Component {
   // }
 
   initialize() {
+    // songdata is mine so localhost
     $.ajax({
       type: "GET",
       url: `http://52.37.102.63:3005/songdata/${this.songId}`,
@@ -48,6 +49,13 @@ class Player extends React.Component {
         })
       }
     })
+
+/* Use Fake Data till we are in completion phase and refactor to include others work 
+
+---------------------------------------------
+    //hashtags is comments so this is Hugos 
+
+
     $.ajax({
       type: "GET",
       url: `http://18.189.26.97:4001/hashtags/${this.songId}`,
@@ -59,6 +67,9 @@ class Player extends React.Component {
         // })
       }
     })
+
+
+    //images so this is Karas
     $.ajax({
       type: "GET",
       url: `http://34.220.154.45:2000/artistBio/${this.songId}`,
@@ -70,6 +81,7 @@ class Player extends React.Component {
       }
     })
   }
+  */
 
   componentDidMount() {
     this.initialize();

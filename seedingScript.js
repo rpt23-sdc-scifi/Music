@@ -143,7 +143,7 @@ var seederboi = async () => {
   .then((res) => {
     return res.data.results
   }).catch((err) => {
-    console.log('Error in retrieving photos yo');
+    console.log(`Error in retrieving photos yo : ${key.api_key}`);
     console.log(err);
   })
 
