@@ -12,9 +12,9 @@ class Player extends React.Component {
       currentSong: '',
       currentPicture: '',
       currentSongName: '',
-      currentHashtags: [],
-      currentBandID: '',
-      currentBandName: '',
+      // currentHashtags: [],
+      // currentBandID: '',
+      // currentBandName: '',
       currentUpload: '1 month ago'
     }
     // this.url = "https://rpt23-fec-soundcloud.s3-us-west-2.amazonaws.com/Djenty+Metal+Town%2C+USA.mp3";
@@ -82,7 +82,7 @@ class Player extends React.Component {
     })
   }
   */
-
+current hashtags band name and band id
   componentDidMount() {
     this.initialize();
     console.log(this.state);
@@ -115,15 +115,21 @@ class Player extends React.Component {
               </div>
               <div className="frankie-info-container">
                 <div className="frankie-user-container">
-                  <div className="frankie-userName">{this.state.currentBandName}</div>
+                  <div className="frankie-userName">
+                    {/* {this.state.currentBandName} */}
+                    Modest Mouse
+                    </div>
                 </div>
                 <div className="frankie-songName">{this.state.currentSongName}</div>
               </div>
             </div>
             <div className="frankie-descrip-container">
               <div className="frankie-upload-container">{this.state.currentUpload}</div>
-              <div className="frankie-hashtags">{this.state.currentHashtags.map(hashtag => {
-                return <div className="frankie-hashtag-container">{'#' + hashtag}</div>
+              <div className="frankie-hashtags">
+                {/* {this.state.currentHashtags.map(hashtag => {
+                return <div className="frankie-hashtag-container">{'#' + hashtag} */}
+                #lostinthewind
+                </div>
               })}</div>
             </div>
             <div className="frankie-pictureContainer">
