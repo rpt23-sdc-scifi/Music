@@ -19,6 +19,13 @@ delete songdata
 */
 
 const { Client } = require('pg')
+
+const client = new Client({
+    user: 'postgres',
+    host: 'localhost',
+    database: 'music'
+});
+client.connect();
 //node-postgress
 /* helper connecting and disconnecting to query
 const client = new Client()
