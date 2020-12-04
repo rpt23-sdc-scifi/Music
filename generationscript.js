@@ -3,11 +3,11 @@ const faker = require('faker')
 const argv = require('yargs').argv
 
 
-const lines = argv.lines || 1000
+const lines = argv.lines || 10000000
 const filename = argv.output || 'musicdata.csv'
 const writeStream = fs.createWriteStream(filename)
-// adding headers up here
-writeStream.write(`id,name,length,image,url,band_id\n`, 'utf-8')
+// // adding headers up here
+
 const createPost = (i) => {
   const id = i
   // id can be the position
@@ -20,6 +20,7 @@ const createPost = (i) => {
   return `${id},${name},${length},${image},${url},${band_id}\n`
 }
 const startWriting = (writeStream, encoding, done) => {
+    writeStream.write(`id,name,length,image,url,band_id\n`, 'utf-8')
   let i = lines
   function writing(){
     let canWrite = true
@@ -45,3 +46,5 @@ startWriting(writeStream, 'utf-8', () => {
 })
 
 // should initialize stream and with all the above and startwriting
+// node generationscript.js --lines 10000000 --output musicdata.csv
+// psql -U $postgres -d $music -c "COPY $music FROM '$musicdata.csv' CSV HEADER;
