@@ -17,4 +17,4 @@ band_id INT NOT NULL
 
 
 
--- psql -U postgres < database/schema.sql
+--  psql -U postgres< database/schema.sql
