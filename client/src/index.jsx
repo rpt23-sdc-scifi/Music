@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+//an audio library 
 import { Howl, Howler } from 'howler';
 import $ from 'jquery';
 import '../clientstyles.css'
@@ -37,10 +38,11 @@ class Player extends React.Component {
     // songdata is mine so localhost
     $.ajax({
       type: "GET",
-      url: `http://52.37.102.63:3005/songdata/${this.songId}`,
+      url: `http://localhost:3005/songdata/${this.songId}`,
       success: (res) => {
         this.setState({
           currentSong: this.audio = new Howl({
+            // the song url is the audio file
             src: [res.songURL],
             // onplay: () => { requestAnimationFrame(this.frame) }
           }),
@@ -80,9 +82,9 @@ class Player extends React.Component {
         })
       }
     })
+    */
   }
-  */
-current hashtags band name and band id
+  
   componentDidMount() {
     this.initialize();
     console.log(this.state);
@@ -130,7 +132,7 @@ current hashtags band name and band id
                 return <div className="frankie-hashtag-container">{'#' + hashtag} */}
                 #lostinthewind
                 </div>
-              })}</div>
+              </div>
             </div>
             <div className="frankie-pictureContainer">
               <img className="frankie-songPicture" src={this.state.currentPicture}></img>
@@ -142,8 +144,8 @@ current hashtags band name and band id
             </div>
           </div>
         </div>
-      </div>
-    );
+     
+    )
   }
 }
 

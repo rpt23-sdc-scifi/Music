@@ -7,12 +7,12 @@ var expressStaticGzip = require('express-static-gzip');
 var port = 3005;
 
 // app.use(express.static('client'));
-app.use('/', expressStaticGzip(express.static('client'), {
+app.use('/', expressStaticGzip(express.static('../client'), {
   enableBrotli: true,
    orderPreference: ['br', 'gz'],
-   setHeaders: function (res, path) {
-      res.setHeader("Cache-Control", "public, max-age=31536000");
-   }
+  //  setHeaders: function (res, path) {
+  //     res.setHeader("Cache-Control", "public, max-age=31536000");
+  //  }
 }))
 
 app.use(cors());
