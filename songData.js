@@ -71,6 +71,12 @@ var findSongsByBand = async (id) => {
   }
 }
 
+/* 
+CRUD
+changeSong is only one that's left
+*/
+
+
 module.exports = {
   saveSong,
   deleteSongs,

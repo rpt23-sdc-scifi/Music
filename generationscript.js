@@ -47,7 +47,8 @@ startWriting(writeStream, 'utf-8', () => {
 
 // should initialize stream and with all the above and startwriting
 // node generationscript.js --lines 10000000 --output musicdata.csv
-// psql -U $postgres -d $music -c "COPY $music FROM '$musicdata.csv' CSV HEADER;
+
+
 
 //terminal import
-//psql -U postgres -d 'music' -c "\copy songdata FROM 'musicdata.csv' delimiter ',' csv header"
+//psql -U postgres -d 'music' -c "\copy songdescription(id,name,length,url,image,band_id) FROM 'musicdata.csv' delimiter ',' csv header"

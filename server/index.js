@@ -5,14 +5,13 @@ var app = express();
 var cors = require('cors');
 var expressStaticGzip = require('express-static-gzip');
 var port = 3005;
-
-// app.use(express.static('client'));
-app.use('/', expressStaticGzip(express.static('../client'), {
+const client = path.join(__dirname, '/../client');
+app.use('/', expressStaticGzip(client, {
   enableBrotli: true,
    orderPreference: ['br', 'gz'],
-  //  setHeaders: function (res, path) {
-  //     res.setHeader("Cache-Control", "public, max-age=31536000");
-  //  }
+   setHeaders: function (res) {
+      res.setHeader("Cache-Control", "public, max-age=31536000");
+   }
 }))
 
 app.use(cors());
