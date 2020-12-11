@@ -9,13 +9,14 @@ const writeStream = fs.createWriteStream(filename)
 
 
 const createPost = (i) => {
+  const id = i
   const url = faker.internet.url()
-  const image = faker.image.imageUrl(faker.random.number(100000));
+  const image = faker.image.imageUrl(faker.random.number(100000))
   const band_id =faker.random.number(500)
-  return `${url},${image},${band_id}\n`
+  return `${id},${url},${image},${band_id}\n`
 }
 const startWriting = (writeStream, encoding, done) => {
-    writeStream.write(`url,image,band_id\n`, 'utf-8')
+    writeStream.write(`id,url,image,band_id\n`, 'utf-8')
   let i = lines
   function writing(){
     let canWrite = true
