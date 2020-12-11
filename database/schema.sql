@@ -6,6 +6,9 @@ CREATE TABLE songdescription(
 id SERIAL PRIMARY KEY,
 name VARCHAR ( 80 ) NOT NULL,
 length INT NOT NULL,
+)
+
+CREATE TABLE songdata(
 url VARCHAR ( 80 ) NOT NULL,
 image VARCHAR ( 80 ) NOT NULL,
 band_id INT NOT NULL 

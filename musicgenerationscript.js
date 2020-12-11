@@ -4,8 +4,9 @@ const argv = require('yargs').argv
 
 
 const lines = argv.lines || 10000000
-const filename = argv.output || 'musicdata.csv'
+const filename = argv.output || 'musicdescription.csv'
 const writeStream = fs.createWriteStream(filename)
+
 
 
 const createPost = (i) => {
@@ -13,14 +14,12 @@ const createPost = (i) => {
   // id can be the position
   const name = faker.lorem.words(2)
   const length= faker.random.number(10)
-  const url = faker.internet.url()
-  const image = faker.image.imageUrl(faker.random.number(1000));
-  const band_id =faker.random.number(10)
 // we want each line to include an id ,n name, length, image, url, band_id
-  return `${id},${name},${length},${url},${image},${band_id}\n`
+  return `${id},${name},${length}\n`
 }
+
 const startWriting = (writeStream, encoding, done) => {
-    writeStream.write(`id,name,length,url,image,band_id\n`, 'utf-8')
+    writeStream.write(`id,name,length\n`, 'utf-8')
   let i = lines
   function writing(){
     let canWrite = true
@@ -40,13 +39,13 @@ const startWriting = (writeStream, encoding, done) => {
   writing()
 }
 
-
 startWriting(writeStream, 'utf-8', () => {
   writeStream.end()
 })
 
+
 // should initialize stream and with all the above and startwriting
-// node generationscript.js --lines 10000000 --output musicdata.csv
+// node musicgenerationscript.js --lines 10000000 --output musicdescription.csv
 
 
 
