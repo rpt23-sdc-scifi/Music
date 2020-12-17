@@ -18,6 +18,8 @@ class Player extends React.Component {
       // currentBandName: '',
       currentUpload: '1 month ago'
     }
+    // this.url = 'https://songdatabucket.s3.us-east-2.amazonaws.com/songs/Mick+Jenkins+-+Carefree+myfreemp3.vip+.mp3';
+    
     // this.url = "https://rpt23-fec-soundcloud.s3-us-west-2.amazonaws.com/Djenty+Metal+Town%2C+USA.mp3";
     this.songId = window.location.pathname.substring(1);
   }
@@ -35,11 +37,13 @@ class Player extends React.Component {
   // }
 
   initialize() {
+  // compondidMount() {
     // songdata is mine so localhost
     $.ajax({
       type: "GET",
       url: `http://localhost:3005/songdata/${this.songId}`,
       success: (res) => {
+        console.log(data);
         this.setState({
           currentSong: this.audio = new Howl({
             // the song url is the audio file
@@ -85,14 +89,15 @@ class Player extends React.Component {
     */
   }
   
-  componentDidMount() {
-    this.initialize();
-    console.log(this.state);
-  }
-
-  // componentWillUnmount() {
-  //   this.audio.removeEventListener('ended', () => this.setState({ playing: false }));
+  // componentDidMount() {
+  //   this.initialize();
+  //   console.log(this.state);
+  //   // s3
   // }
+
+  componentWillUnmount() {
+    this.audio.removeEventListener('ended', () => this.setState({ playing: false }));
+  }
 
   togglePlay() {
     console.log(this.audio);

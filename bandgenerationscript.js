@@ -3,7 +3,7 @@ const faker = require('faker')
 const argv = require('yargs').argv
 
 
-const lines = argv.lines || 10000000
+const lines = argv.lines || 500
 const filename = argv.output || 'banddata.csv'
 const writeStream = fs.createWriteStream(filename)
 
@@ -42,4 +42,7 @@ startWriting(writeStream, 'utf-8', () => {
   writeStream.end()
 })
 
-//node bandgenerationscript.js --lines 10000000 --output banddata.csv
+//node bandgenerationscript.js --lines 501 --output banddata.csv
+
+//terminal import
+//psql -U postgres -d 'music' -c "\copy bands(band_id,name) FROM 'banddata.csv' delimiter ',' csv header"

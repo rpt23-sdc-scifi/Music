@@ -57,9 +57,9 @@ band_id int
 Path Parameters:
 id int
 
-DELETE/songdata/{id}
+DELETE/songSdata/{id}
 
-Deletes songdata by id
+Deletes songsdata by id
 
 
 Query Parameters:

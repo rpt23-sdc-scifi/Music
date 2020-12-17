@@ -10,7 +10,7 @@ songdata(
 */
 module.exports =  {
 
-
+// update these to account for three tables
 InsertQuery(name, length, url, image, band_id) {
     `INSERT INTO songdata (
     name, length, url, image, band_id

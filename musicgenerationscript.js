@@ -51,4 +51,4 @@ startWriting(writeStream, 'utf-8', () => {
 
 
 //terminal import
-//psql -U postgres -d 'music' -c "\copy songdescription(id,name,length,url,image,band_id) FROM 'musicdata.csv' delimiter ',' csv header"
+//psql -U postgres -d 'music' -c "\copy songdescription(id,name,length,band_id) FROM 'musicdescription.csv' delimiter ',' csv header"

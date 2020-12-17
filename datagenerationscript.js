@@ -42,3 +42,6 @@ startWriting(writeStream, 'utf-8', () => {
 
 
 //node datagenerationscript.js --lines 10000000 --output musicdata.csv
+
+//terminal import
+//psql -U postgres -d 'music' -c "\copy songsdata(id,url,image,band_id) FROM 'musicdata.csv' delimiter ',' csv header"
