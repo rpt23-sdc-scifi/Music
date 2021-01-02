@@ -44,6 +44,15 @@ var deleteSongs = async () => {
   }
 };
 
+var deleteOneSong = async (id) => {
+  try {
+    var deleted = await Song.deleteOne({ "songId": id});
+    return (deleted);
+  } catch(error) {
+    console.error(error);
+  }
+}
+
 var findSong = async (id) => {
   try {
     var found = await Song.findOne({ songID: id })
@@ -71,6 +80,14 @@ var findSongsByBand = async (id) => {
   }
 }
 
+// var changeSong = async(id) => {
+//   try {
+//     var changing = await Song.updateOne({ 'bandID': id});
+//     return found;
+//   } catch(error) {
+//     return(`Error in finding songs associated by bandID ${id}`)
+//   }
+// }
 /* 
 CRUD
 changeSong is only one that's left
