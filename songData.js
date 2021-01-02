@@ -28,7 +28,7 @@ var saveSong = async (songData, callback) => {
   try {
     let song = new Song(songData);
     var saved = await song.save(( ) => {
-      return('Song saved');
+      return(`Song saved ${saved}`);
     })
   } catch(error) {
     console.error(error);
@@ -46,7 +46,7 @@ var deleteSongs = async () => {
 
 var deleteOneSong = async (id) => {
   try {
-    var deleted = await Song.deleteOne({ "songId": id});
+    var deleted = await Song.deleteOne({ "songID": id});
     return (deleted);
   } catch(error) {
     console.error(error);
@@ -80,22 +80,35 @@ var findSongsByBand = async (id) => {
   }
 }
 
-// var changeSong = async(id) => {
-//   try {
-//     var changing = await Song.updateOne({ 'bandID': id});
-//     return found;
-//   } catch(error) {
-//     return(`Error in finding songs associated by bandID ${id}`)
-//   }
-// }
+var changeSong = async(id, name, length, url, image, band) => {
+  try {
+    var changing = await Song.updateOne({ 'songID': id},
+     {$set: {songName: name, 
+      songLength: length, 
+      songURL: url, 
+      songImage: image,
+       bandID: band}});
+    return changing;
+  } catch(error) {
+    return(`Error in finding songs associated by bandID ${id}`)
+  }
+}
 /* 
 CRUD
+songName: String,
+  songLength: Number,
+  songID: Number,
+  songURL: String,
+  songImage: String,
+  bandID: Number
 changeSong is only one that's left
 */
 
 
 module.exports = {
   saveSong,
+  changeSong,
+  deleteOneSong,
   deleteSongs,
   findSong,
   countSongs,

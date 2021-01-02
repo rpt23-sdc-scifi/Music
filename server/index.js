@@ -1,10 +1,13 @@
 var express = require('express');
 var songData = require('../songData');
 var path = require('path');
+var bodyParser = require('body-parser');
 var app = express();
 var cors = require('cors');
 var expressStaticGzip = require('express-static-gzip');
 var port = 3005;
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 const client = path.join(__dirname, '/../client');
 app.use('/', expressStaticGzip(client, {
   enableBrotli: true,
@@ -26,6 +29,59 @@ app.get('/songdata/:id', async (req, res) => {
     } else {
       var findSongByID = await songData.findSong(id)
       res.send(findSongByID);
+    }
+  } catch (error) {
+    console.log(error)
+  }
+});
+
+app.post('/songdata/new', async (req, res) => {
+  try {
+    var dataToBeSaved = req.body;
+    console.log(req.body)
+    var saved = await songData.saveSong(dataToBeSaved)
+    res.send(saved);
+  } catch (error) {
+    console.log(error)
+  }
+});
+
+app.delete('/songdata/:id', async (req, res) => {
+  try {
+    var id = req.params.id;
+    if (id > 100 || id < 0) {
+      res.end('SONG DOES NOT EXIST');
+    } else {
+      var deletedSongByID = await songData.deleteOneSong(id)
+      res.send(deletedSongByID);
+    }
+  } catch (error) {
+    console.log(error)
+  }
+});
+
+app.delete('/all', async (req, res) => {
+  try {
+    var id = req.params.id;
+    if (id > 100 || id < 0) {
+      res.end('SONG DOES NOT EXIST');
+    } else {
+      var deleted = await songData.deleteSongs()
+      res.send(deleted);
+    }
+  } catch (error) {
+    console.log(error)
+  }
+});
+
+app.put('/songdata/:id', async (req, res) => {
+  try {
+    var id = req.params.id;
+    if (id > 100 || id < 0) {
+      res.end('SONG DOES NOT EXIST');
+    } else {
+      // var deletedSongByID = await songData.changeSong(id, name, length, url, image, band)
+      res.send(req.body);
     }
   } catch (error) {
     console.log(error)

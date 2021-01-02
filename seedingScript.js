@@ -167,6 +167,7 @@ var seederboi = async () => {
     dataToSave.songImage = photos[Math.floor(Math.random() * ((photos.length - 1)))];
     dataToSave.bandID = Math.floor(Math.random() * (30 - 1) + 1);
     var saved = await songData.saveSong(dataToSave);
+    
   }
 }
 
