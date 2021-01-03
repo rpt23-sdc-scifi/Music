@@ -14,7 +14,7 @@ const createPost = (i) => {
   // id can be the position
   const name = faker.lorem.words(2)
   const length= faker.random.number(10)
-  const band_id =faker.random.number(500)
+  const band_id =faker.random.number(999999)
 // we want each line to include an id ,n name, length, image, url, band_id
   return `${id},${name},${length},${band_id}\n`
 }
