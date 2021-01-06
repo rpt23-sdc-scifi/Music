@@ -3,12 +3,12 @@
 //router.delete
 
 const router = require ('express').Router();
-const controller = require('controller.js');
+const controller = require('./controller.js');
 
-router.get('songdata/:id', controller.songs);
-router.put('songdata/:id', controller.update);
-router.post('/songdata', controller.insert);
-router.delete('/songdata/:id', controller.deleter);
-router.get('/songdata/:?band_id', controller.band);
+router.get('song/:id', controller.songs);
+router.put('song/:id', controller.update);
+router.post('/song', controller.insert);
+router.delete('/song/:id', controller.deleter);
+router.get('/band/:band_id', controller.band);
 
 module.exports = router;

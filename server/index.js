@@ -16,6 +16,8 @@ app.use('/', expressStaticGzip(client, {
       res.setHeader("Cache-Control", "public, max-age=31536000");
    }
 }))
+const router = require('./routes.js');
+app.use('/api', router);
 
 app.use(cors());
 
@@ -116,7 +118,4 @@ app.listen(port, () => {
   console.log('Server is listening at http://localhost:' + port)
 });
 
-/*
-const router = require('./routes.js');
-app.use('/api', router);
-*/
+

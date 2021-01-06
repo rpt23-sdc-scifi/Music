@@ -31,7 +31,7 @@ WHERE id = ${id});`
 
 GetSong(id) {
     `SELECT * 
-    FROM songdata
+    FROM songsdata, songdescription
     WHERE id = ${id};`
 },
 

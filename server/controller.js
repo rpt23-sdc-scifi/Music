@@ -53,7 +53,7 @@ const helper = require('../helper/helper.js');
 
 const songs = (req,res) => {
 client
-.query(helper.GetSong(/*req.id*/))
+.query(helper.GetSong(req.id))
 .then(res => console.log(res.rows[0]))
 .catch( e => console.log(e.stack))
 
