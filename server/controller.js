@@ -18,15 +18,7 @@ delete songdata
 
 */
 
-const { Client } = require('pg')
 
-const client = new Client({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'music',
-    port:5432
-});
-client.connect();
 //node-postgress
 /* helper connecting and disconnecting to query
 const client = new Client()
@@ -50,53 +42,61 @@ DeleteSongs(id) {
 }
 */
 const helper = require('../helper/helper.js');
-
-const songs = (req,res) => {
-client
-.query(helper.GetSong(req.id))
-.then(res => console.log(res.rows[0]))
-.catch( e => console.log(e.stack))
-
-};
-
-const update = (req,res) => {
-    client
-    .query(helper.UpdateQuery(/*req.[name, length, url, image, band_id, id]*/))
-    .then(res => console.log(res.rows[0]))
-    .catch( e => console.log(e.stack))
-
-};
-
-const insert = (req,res) => {
-    client
-    .query(helper.InsertQuery(/*req.[name, length, url, image, band_id]*/))
-    .then(res => console.log(res.rows[0]))
-    .catch( e => console.log(e.stack))
+const db = require('../database/postgres_db.js');
+const songs = async (req,res) => {
+ try {
+    const id = req.params.id;
+    if (id > 1000000 || id < 0) {
+      res.end('SONG DOES NOT EXIST');
+    } else {
+      const Song = await db.findSong(id)
+      res.send(Song);
+    
+    }
+  } catch (error) {
+    console.log(error)
+  }
 
 };
 
-const deleter = (req,res) => {
-    client
-    .query(helper.DeleteSongs(/*req.id*/))
-    .then(res => console.log(res.rows[0]))
-    .catch( e => console.log(e.stack))
+// const update = (req,res) => {
+//     client
+//     .query(helper.UpdateQuery(/*req.[name, length, url, image, band_id, id]*/))
+//     .then(res => console.log(res.rows[0]))
+//     .catch( e => console.log(e.stack))
 
-};
+// };
 
-const band = (req,res) => {
-    client
-    .query(helper.GetBandSongs(/*req.param?*/))
-    .then(res => console.log(res.rows[0]))
-    .catch( e => console.log(e.stack))
+// const insert = (req,res) => {
+//     client
+//     .query(helper.InsertQuery(/*req.[name, length, url, image, band_id]*/))
+//     .then(res => console.log(res.rows[0]))
+//     .catch( e => console.log(e.stack))
 
-};
+// };
+
+// const deleter = (req,res) => {
+//     client
+//     .query(helper.DeleteSongs(/*req.id*/))
+//     .then(res => console.log(res.rows[0]))
+//     .catch( e => console.log(e.stack))
+
+// };
+
+// const band = (req,res) => {
+//     client
+//     .query(helper.GetBandSongs(/*req.param?*/))
+//     .then(res => console.log(res.rows[0]))
+//     .catch( e => console.log(e.stack))
+
+// };
 
 module.exports = {
     songs,
-    update,
-    insert,
-    deleter,
-    band,
+    // update,
+    // insert,
+    // deleter,
+    // band,
   };
  
 // router.get('songdata/:id', controller.songs);

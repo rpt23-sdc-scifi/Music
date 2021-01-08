@@ -30,9 +30,11 @@ WHERE id = ${id});`
 },
 
 GetSong(id) {
-    `SELECT * 
-    FROM songsdata, songdescription
-    WHERE id = ${id};`
+   return `SELECT *
+    FROM songsdata 
+    INNER JOIN songdescription 
+    ON songsdata.id = songdescription.id
+    WHERE songsdata.id = ${id};`
 },
 
 GetBandSongs(band_id) {
