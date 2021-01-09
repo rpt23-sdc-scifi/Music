@@ -4,7 +4,7 @@ const db = require('../database/postgres_db.js');
 const songs = async (req,res) => {
  try {
     const id = req.params.id;
-    if (id > 1000000 || id < 0) {
+    if (id > 10000000  || id < 0) {
       res.end('SONG DOES NOT EXIST');
     } else {
       const Song = await db.findSong(id)
@@ -25,7 +25,7 @@ const update = async (req,res) => {
         var url = req.body.songURL
         var image = req.body.songImage
         var band_id = req.body.bandID
-        if (id > 1000000 || id < 0) {
+        if (id > 10000000 || id < 0) {
           res.end('SONG DOES NOT EXIST');
         } else {
           const changeSong = await db.updateSong(songname, length, url, image, band_id, id)
@@ -47,13 +47,8 @@ const insert = async (req,res) => {
         var url = req.body.songURL
         var image = req.body.songImage
         var band_id = req.body.bandID
-        if (id > 1000000 || id < 0) {
-          res.end('SONG DOES NOT EXIST');
-        } else {
-          const addSong = await db.insertSong(songname, length, url, image, band_id, id)
-          res.send(addSong);
-        
-        }
+        const addSong = await db.insertSong(songname, length, url, image, band_id, id)
+        res.send(addSong);
       } catch (error) {
         console.log(error)
       }
@@ -63,7 +58,7 @@ const insert = async (req,res) => {
 const deleter = async (req,res) => {
     try {
         const id = req.params.id;
-        if (id > 1000000 || id < 0) {
+        if (id > 10000000 || id < 0) {
           res.end('SONG DOES NOT EXIST');
         } else {
           const deleteSong = await db.deleteSong(id)
