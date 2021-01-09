@@ -78,7 +78,7 @@ const deleter = async (req,res) => {
 const band = async (req,res) => {
     try {
         const band_id = req.params.id;
-        if (id > 1000000 || id < 0) {
+        if (id > 100000 || id < 0) {
           res.end('BAND DOES NOT EXIST');
         } else {
           const band = await db.findBand(band_id)
