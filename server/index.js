@@ -1,4 +1,4 @@
-require('newrelic')
+require('newrelic');
 var express = require('express');
 var songData = require('../songData');
 var path = require('path');
