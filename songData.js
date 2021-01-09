@@ -93,16 +93,7 @@ var changeSong = async(id, name, length, url, image, band) => {
     return(`Error in finding songs associated by bandID ${id}`)
   }
 }
-/* 
-CRUD
-songName: String,
-  songLength: Number,
-  songID: Number,
-  songURL: String,
-  songImage: String,
-  bandID: Number
-changeSong is only one that's left
-*/
+
 
 
 module.exports = {

@@ -11,23 +11,46 @@ songdata(
 module.exports =  {
 
 // update these to account for three tables
-InsertQuery(name, length, url, image, band_id) {
-    `INSERT INTO songdata (
+InsertQuery(songname, length, url, image, band_id) {
+   return `BEGIN TRANSACTION
+
+    INSERT INTO songsdata (
     name, length, url, image, band_id
 )
-VALUES (${name, length, url, image, band_id});`
+VALUES (${url, image, band_id});
+
+INSERT INTO songdescription (
+    name, length, url, image, band_id
+)
+VALUES (${songname, length, band_id});
+
+COMMIT`
+
 },
 
-UpdateQuery(name, length, url, image, band_id, id) {
-    `UPDATE songdata 
+UpdateQuery(songname, length, url, image, band_id, id) {
+    return `BEGIN TRANSACTION
+    
+    
+    UPDATE songsdata 
 SET (
-    name = ${name},
-    length = ${length},
     url = ${url}, 
     image = ${image}, 
     band_id = ${band_id}
-WHERE id = ${id});`
+WHERE id = ${id});
+
+
+UPDATE songdescription 
+SET (
+    name = ${songname},
+    length = ${length},
+    band_id = ${band_id}
+WHERE id = ${id});
+
+
+COMMIT`
 },
+
 
 GetSong(id) {
    return `SELECT *
@@ -38,15 +61,22 @@ GetSong(id) {
 },
 
 GetBandSongs(band_id) {
-    `SELECT * 
+    return `SELECT * 
     FROM songdata
     WHERE band_id = ${band_id};`
 },
 
 DeleteSongs(id) {
-`DELETE FROM songdata
- WHERE id = ${id};`
-}
+return `BEGIN TRANSACTION
+
+DELETE FROM songsdata
+ WHERE id = ${id};
+ 
+ DELETE FROM songdescription
+ WHERE id = ${id};
+
+ COMMIT`
+},
 
 }
 

@@ -11,7 +11,7 @@ const client = new Client(
 }
 );
 
-const findSong = async (id) =>{
+const findSong = async (id) => {
     try {
         const Song = await client.query(helper.GetSong(id))
         return Song.rows[0]
@@ -21,6 +21,45 @@ const findSong = async (id) =>{
     }
 }
 
+const updateSong = async (id) => {
+    try {
+        const updateSong = await client.query(helper.UpdateQuery(songname, length, url, image, band_id, id))
+        return updateSong
+    }
+    catch (err) {
+        console.log('Error could not update Song: ', err)
+    }
+}
+
+
+const insertSong = async (id) => {
+    try {
+        const insertSong = await client.query(helper.InsertQuery(songname, length, url, image, band_id))
+        return insertSong
+    }
+    catch (err) {
+        console.log('Error could not insert Song: ', err)
+    }
+}
+const deleteSong = async (id) => {
+    try {
+        const  deletedSong = await client.query(helper.DeleteSongs(id))
+        return deletedSong
+    }
+    catch (err) {
+        console.log('Error could not delete Song: ', err)
+    }
+}
+
+const findBand = async (band_id) => {
+    try { 
+        const  bandName = await client.query(helper.GetBandSongs(band_id))
+        return bandName.rows[0]
+    }
+    catch (err) {
+        console.log('Error could not delete Song: ', err)
+    }
+}
 
 const connect = async () => {
     try {
@@ -37,5 +76,9 @@ const start = async() => {
 start();
 
 module.exports = {
-    findSong
+    findSong,
+    updateSong,
+    insertSong,
+    deleteSong,
+    findBand,
 }
