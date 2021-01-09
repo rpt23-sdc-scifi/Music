@@ -14,8 +14,7 @@ export let options = {
 */
    'http_req_duration':  ['p(90) < 500', 'p(99) < 1000'],
    'errorRate': [{threshold: 'rate < 0.05', abortOnFail: true, delayAbortEval: '30s'}]
-
-      
+    
   },
   stages: [
     { duration: '30s', target: 1 },
