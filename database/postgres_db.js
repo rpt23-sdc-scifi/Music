@@ -57,7 +57,7 @@ const findBand = async (band_id) => {
         return bandName.rows[0]
     }
     catch (err) {
-        console.log('Error could not delete Song: ', err)
+        console.log('Error could not find Band', err)
     }
 }
 
