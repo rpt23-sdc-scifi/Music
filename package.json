@@ -15,7 +15,8 @@
     "test": "mocha",
     "jest": "jest",
     "band": "bash seedband.sh 1000000",
-    "music": "bash seedmusic.sh 10000000"
+    "music": "bash seedmusic.sh 10000000",
+    "stress-test": "bash stresstest.sh"
   },
   "dependencies": {
     "axios": "^0.20.0",
