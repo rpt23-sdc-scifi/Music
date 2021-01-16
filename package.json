@@ -19,6 +19,7 @@
     "stress-test": "bash stresstest.sh"
   },
   "dependencies": {
+    "async-redis": "^1.1.7",
     "axios": "^0.20.0",
     "body-parser": "^1.19.0",
     "brotli-webpack-plugin": "^1.1.0",
@@ -41,6 +42,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-native-sound": "^0.11.0",
+    "redis": "^3.0.2",
     "s3": "^4.4.0",
     "unsplash-js": "^6.3.0",
     "yargs": "^16.1.1"

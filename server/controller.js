@@ -19,12 +19,12 @@ const songs = async (req,res) => {
 
 const update = async (req,res) => {
     try {
-        var id = req.params.id;
-        var songname = req.body.songName
-        var length = req.body.songLength
-        var url = req.body.songURL
-        var image = req.body.songImage
-        var band_id = req.body.bandID
+        let id = req.params.id;
+        let songname = req.body.songName
+        let length = req.body.songLength
+        let url = req.body.songURL
+        let image = req.body.songImage
+        let band_id = req.body.bandID
         if (id > 10000000 || id < 0) {
           res.end('SONG DOES NOT EXIST');
         } else {
@@ -41,12 +41,12 @@ const update = async (req,res) => {
 const insert = async (req,res) => {
    
     try {
-        var id = req.params.id;
-        var songname = req.body.songName
-        var length = req.body.songLength
-        var url = req.body.songURL
-        var image = req.body.songImage
-        var band_id = req.body.bandID
+        let id = req.params.id;
+        let songname = req.body.songName
+        let length = req.body.songLength
+        let url = req.body.songURL
+        let image = req.body.songImage
+        let band_id = req.body.bandID
         const addSong = await db.insertSong(songname, length, url, image, band_id, id)
         res.send(addSong);
       } catch (error) {

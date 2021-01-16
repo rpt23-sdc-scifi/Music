@@ -1,6 +1,15 @@
 const helper = require('../helper/helper.js');
 const { Pool, Client } = require('pg')
 const pool = new Pool()
+const redis = require('async-redis');
+
+const redisclient = redis.createClient({port: 6379});
+
+redisclient.on('error', err => {
+console.log(`Error: ${err}`)
+});
+
+
 
 const client = new Client(
     {
@@ -12,14 +21,34 @@ const client = new Client(
 );
 
 const findSong = async (id) => {
-    try {
-        const Song = await client.query(helper.GetSong(id))
-        return Song.rows[0]
-    }
-    catch (err) {
-        console.log('Error could not find Song: ', err)
-    }
-}
+     const redisSong = await redisclient.get(id)
+     if (redisSong !== null) {
+        return JSON.parse(redisSong)
+     } else {
+        try {
+
+            
+            const Song = await client.query(helper.GetSong(id))
+            // console.log(JSON.stringify(Song.rows[0]))
+            const cache = await redisclient.set(id, `${JSON.stringify(Song.rows[0])}`);
+            // console.log(cache);
+            
+            console.log(Song.rows[0])
+            return Song.rows[0]
+            }
+        
+        catch (err) {
+            console.log('Error could not find Song: ', err)
+        }
+
+     }
+      
+        }
+    
+    
+
+
+
 
 const updateSong = async (id) => {
     try {
@@ -74,6 +103,7 @@ const start = async() => {
     console.log('Connected to PSQL Database')
 };
 start();
+
 
 module.exports = {
     findSong,
