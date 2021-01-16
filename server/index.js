@@ -111,6 +111,10 @@ app.put('/songdata/:id', async (req, res) => {
     console.log(error)
   }
 });
+app.get('/loaderio-5bc6b08eb0b2d09bbf420d49fa4c9319/', (req, res) => {
+  res.sendFile('../loaderio-5bc6b08eb0b2d09bbf420d49fa4c9319.txt')
+})
+
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/index.html'));
