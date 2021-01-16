@@ -19,6 +19,7 @@
     "stress-test": "bash stresstest.sh"
   },
   "dependencies": {
+    "async-redis": "^1.1.7",
     "axios": "^0.20.0",
     "body-parser": "^1.19.0",
     "brotli-webpack-plugin": "^1.1.0",
@@ -38,6 +39,7 @@
     "nodemon": "^2.0.4",
     "path": "^0.12.7",
     "pg": "^8.5.1",
+    "postgres-redis": "^0.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-native-sound": "^0.11.0",
