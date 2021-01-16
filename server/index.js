@@ -112,7 +112,7 @@ app.put('/songdata/:id', async (req, res) => {
   }
 });
 app.get('/loaderio-5bc6b08eb0b2d09bbf420d49fa4c9319/', (req, res) => {
-  res.sendFile('./loaderio-5bc6b08eb0b2d09bbf420d49fa4c9319.txt')
+  res.sendFile('../loaderio-5bc6b08eb0b2d09bbf420d49fa4c9319.txt')
 })
 
 
