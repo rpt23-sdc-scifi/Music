@@ -43,10 +43,11 @@ class Player extends React.Component {
     // songdata is mine so localhost
     $.ajax({
       type: "GET",
-      url: `http://localhost:3005/api/song/${this.songId}`,
+      url: `http://3.16.125.63:3005/api/song/${this.songId}`,
       success: (res) => {
         console.log('3');
         console.log(res.data);
+        alert('request created');
         
         // this.setState({
         //   currentSong: this.audio = new Howl({
