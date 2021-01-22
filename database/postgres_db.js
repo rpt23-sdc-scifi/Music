@@ -21,10 +21,10 @@ const client = new Client(
 );
 
 const findSong = async (id) => {
-    //  const redisSong = await redisclient.get(id)
-    //  if (redisSong !== null) {
-    //     return JSON.parse(redisSong)
-    //  } else {
+     const redisSong = await redisclient.get(id)
+     if (redisSong !== null) {
+        return JSON.parse(redisSong)
+     } else {
         try {
 
             
@@ -43,7 +43,7 @@ const findSong = async (id) => {
 
      }
       
-        // }
+        }
     
     
 
