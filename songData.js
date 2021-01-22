@@ -1,107 +1,108 @@
-const mongoose = require('mongoose');
+// Mongoose Connection
+//const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/player');
+// mongoose.connect('mongodb://localhost/player');
 
-const db = mongoose.connection;
+// const db = mongoose.connection;
 
-db.on('error', (err) => {
-  console.log('Could not connect to Mongo server...');
-  console.log(err);
-});
+// db.on('error', (err) => {
+//   console.log('Could not connect to Mongo server...');
+//   console.log(err);
+// });
 
-db.on('open', (ref) => {
-  console.log('Connected to Mongo server...');
-});
+// db.on('open', (ref) => {
+//   console.log('Connected to Mongo server...');
+// });
 
-const songDataSchema = new mongoose.Schema({
-  songName: String,
-  songLength: Number,
-  songID: Number,
-  songURL: String,
-  songImage: String,
-  bandID: Number
-});
+// const songDataSchema = new mongoose.Schema({
+//   songName: String,
+//   songLength: Number,
+//   songID: Number,
+//   songURL: String,
+//   songImage: String,
+//   bandID: Number
+// });
 
-const Song = mongoose.model('Song', songDataSchema);
+// const Song = mongoose.model('Song', songDataSchema);
 
-var saveSong = async (songData, callback) => {
-  try {
-    let song = new Song(songData);
-    var saved = await song.save(( ) => {
-      return(`Song saved ${saved}`);
-    })
-  } catch(error) {
-    console.error(error);
-  }
-};
+// var saveSong = async (songData, callback) => {
+//   try {
+//     let song = new Song(songData);
+//     var saved = await song.save(( ) => {
+//       return(`Song saved ${saved}`);
+//     })
+//   } catch(error) {
+//     console.error(error);
+//   }
+// };
 
-var deleteSongs = async () => {
-  try {
-    var deleted = await Song.deleteMany({ });
-    return (deleted);
-  } catch(error) {
-    console.error(error);
-  }
-};
+// var deleteSongs = async () => {
+//   try {
+//     var deleted = await Song.deleteMany({ });
+//     return (deleted);
+//   } catch(error) {
+//     console.error(error);
+//   }
+// };
 
-var deleteOneSong = async (id) => {
-  try {
-    var deleted = await Song.deleteOne({ "songID": id});
-    return (deleted);
-  } catch(error) {
-    console.error(error);
-  }
-}
+// var deleteOneSong = async (id) => {
+//   try {
+//     var deleted = await Song.deleteOne({ "songID": id});
+//     return (deleted);
+//   } catch(error) {
+//     console.error(error);
+//   }
+// }
 
-var findSong = async (id) => {
-  try {
-    var found = await Song.findOne({ songID: id })
-    return found;
-  } catch (error) {
-    console.error(error);
-  }
-}
+// var findSong = async (id) => {
+//   try {
+//     var found = await Song.findOne({ songID: id })
+//     return found;
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
 
-var countSongs = async () => {
-  try {
-    var counted = await Song.countDocuments({ });
-    return counted;
-  } catch(error) {
-    return('Error in counting songs in DB');
-  }
-}
+// var countSongs = async () => {
+//   try {
+//     var counted = await Song.countDocuments({ });
+//     return counted;
+//   } catch(error) {
+//     return('Error in counting songs in DB');
+//   }
+// }
 
-var findSongsByBand = async (id) => {
-  try {
-    var found = await Song.find({ 'bandID': id});
-    return found;
-  } catch(error) {
-    return(`Error in finding songs associated by bandID ${id}`)
-  }
-}
+// var findSongsByBand = async (id) => {
+//   try {
+//     var found = await Song.find({ 'bandID': id});
+//     return found;
+//   } catch(error) {
+//     return(`Error in finding songs associated by bandID ${id}`)
+//   }
+// }
 
-var changeSong = async(id, name, length, url, image, band) => {
-  try {
-    var changing = await Song.updateOne({ 'songID': id},
-     {$set: {songName: name, 
-      songLength: length, 
-      songURL: url, 
-      songImage: image,
-       bandID: band}});
-    return changing;
-  } catch(error) {
-    return(`Error in finding songs associated by bandID ${id}`)
-  }
-}
+// var changeSong = async(id, name, length, url, image, band) => {
+//   try {
+//     var changing = await Song.updateOne({ 'songID': id},
+//      {$set: {songName: name, 
+//       songLength: length, 
+//       songURL: url, 
+//       songImage: image,
+//        bandID: band}});
+//     return changing;
+//   } catch(error) {
+//     return(`Error in finding songs associated by bandID ${id}`)
+//   }
+// }
 
 
 
-module.exports = {
-  saveSong,
-  changeSong,
-  deleteOneSong,
-  deleteSongs,
-  findSong,
-  countSongs,
-  findSongsByBand
-}
+// module.exports = {
+//   saveSong,
+//   changeSong,
+//   deleteOneSong,
+//   deleteSongs,
+//   findSong,
+//   countSongs,
+//   findSongsByBand
+// }

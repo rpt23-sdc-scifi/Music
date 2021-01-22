@@ -43,19 +43,20 @@ class Player extends React.Component {
     // songdata is mine so localhost
     $.ajax({
       type: "GET",
-      url: `http://localhost:3005/songdata/${this.songId}`,
+      url: `http://localhost:3005/api/song/${this.songId}`,
       success: (res) => {
+        console.log('3');
+        console.log(res.data);
         
-        console.log(data);
-        this.setState({
-          currentSong: this.audio = new Howl({
-            // the song url is the audio file
-            src: [res.url],
-            // onplay: () => { requestAnimationFrame(this.frame) }
-          }),
-          currentPicture: res.image,
-          currentSongName: res.name
-        })
+        // this.setState({
+        //   currentSong: this.audio = new Howl({
+        //     // the song url is the audio file
+        //     src: [res.url],
+        //     // onplay: () => { requestAnimationFrame(this.frame) }
+        //   }),
+        //   currentPicture: res.image,
+        //   currentSongName: res.name
+        // })
       }
     })
 
@@ -147,8 +148,8 @@ class Player extends React.Component {
             </div>
             <div className="frankie-progress-area">
               <div className="frankie-progress-container">
-                <div className="frankie-progress-bar">progress bar goes here</div>
-              </div>
+                <div className="frankie-progress-bar">progress bar goes here ok</div>
+                  </div>
             </div>
           </div>
         </div>
