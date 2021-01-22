@@ -13,9 +13,9 @@ class Player extends React.Component {
       currentSong: '',
       currentPicture: '',
       currentSongName: '',
-      // currentHashtags: [],
-      // currentBandID: '',
-      // currentBandName: '',
+      currentHashtags: [],
+      currentBandID: '',
+      currentBandName: '',
       currentUpload: '1 month ago'
     }
     // this.url = 'https://songdatabucket.s3.us-east-2.amazonaws.com/songs/Mick+Jenkins+-+Carefree+myfreemp3.vip+.mp3';
@@ -36,22 +36,25 @@ class Player extends React.Component {
 
   // }
 
-  initialize() {
-  // compondidMount() {
+  // initialize() {
+  //   console.log(1)
+  //   console.log(this.songId)
+  compondidMount() {
     // songdata is mine so localhost
     $.ajax({
       type: "GET",
-      url: `http://18.216.175.63:3000/api/song/${this.songId}`,
+      url: `http://localhost:3005/songdata/${this.songId}`,
       success: (res) => {
+        
         console.log(data);
         this.setState({
           currentSong: this.audio = new Howl({
             // the song url is the audio file
-            src: [res.songURL],
+            src: [res.url],
             // onplay: () => { requestAnimationFrame(this.frame) }
           }),
-          currentPicture: res.songImage,
-          currentSongName: res.songName
+          currentPicture: res.image,
+          currentSongName: res.name
         })
       }
     })
@@ -95,9 +98,9 @@ class Player extends React.Component {
   //   // s3
   // }
 
-  componentWillUnmount() {
-    this.audio.removeEventListener('ended', () => this.setState({ playing: false }));
-  }
+  // componentWillUnmount() {
+  //   this.audio.removeEventListener('ended', () => this.setState({ playing: false }));
+  // }
 
   togglePlay() {
     console.log(this.audio);
