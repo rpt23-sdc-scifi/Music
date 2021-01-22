@@ -8,6 +8,7 @@ const songs = async (req,res) => {
       res.end('SONG DOES NOT EXIST');
     } else {
       const Song = await db.findSong(id)
+      
       res.send(Song);
     
     }
@@ -29,7 +30,9 @@ const update = async (req,res) => {
           res.end('SONG DOES NOT EXIST');
         } else {
           const changeSong = await db.updateSong(songname, length, url, image, band_id, id)
+
           res.send(changeSong);
+          
         
         }
       } catch (error) {

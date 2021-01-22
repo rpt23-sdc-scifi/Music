@@ -13,9 +13,9 @@ class Player extends React.Component {
       currentSong: '',
       currentPicture: '',
       currentSongName: '',
-      // currentHashtags: [],
-      // currentBandID: '',
-      // currentBandName: '',
+      currentHashtags: [],
+      currentBandID: '',
+      currentBandName: '',
       currentUpload: '1 month ago'
     }
     // this.url = 'https://songdatabucket.s3.us-east-2.amazonaws.com/songs/Mick+Jenkins+-+Carefree+myfreemp3.vip+.mp3';
@@ -36,23 +36,27 @@ class Player extends React.Component {
 
   // }
 
-  initialize() {
-  // compondidMount() {
+  // initialize() {
+  //   console.log(1)
+  //   console.log(this.songId)
+  compondidMount() {
     // songdata is mine so localhost
     $.ajax({
       type: "GET",
-      url: `http://18.216.175.63:3000/api/song/${this.songId}`,
+      url: `http://localhost:3005/api/song/${this.songId}`,
       success: (res) => {
-        console.log(data);
-        this.setState({
-          currentSong: this.audio = new Howl({
-            // the song url is the audio file
-            src: [res.songURL],
-            // onplay: () => { requestAnimationFrame(this.frame) }
-          }),
-          currentPicture: res.songImage,
-          currentSongName: res.songName
-        })
+        console.log('3');
+        console.log(res.data);
+        
+        // this.setState({
+        //   currentSong: this.audio = new Howl({
+        //     // the song url is the audio file
+        //     src: [res.url],
+        //     // onplay: () => { requestAnimationFrame(this.frame) }
+        //   }),
+        //   currentPicture: res.image,
+        //   currentSongName: res.name
+        // })
       }
     })
 
@@ -95,9 +99,9 @@ class Player extends React.Component {
   //   // s3
   // }
 
-  componentWillUnmount() {
-    this.audio.removeEventListener('ended', () => this.setState({ playing: false }));
-  }
+  // componentWillUnmount() {
+  //   this.audio.removeEventListener('ended', () => this.setState({ playing: false }));
+  // }
 
   togglePlay() {
     console.log(this.audio);
@@ -144,8 +148,8 @@ class Player extends React.Component {
             </div>
             <div className="frankie-progress-area">
               <div className="frankie-progress-container">
-                <div className="frankie-progress-bar">progress bar goes here</div>
-              </div>
+                <div className="frankie-progress-bar">progress bar goes here ok</div>
+                  </div>
             </div>
           </div>
         </div>
