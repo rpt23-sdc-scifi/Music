@@ -55,7 +55,7 @@ COMMIT`
 GetSong(id) {
    return `SELECT *
     FROM songsdata 
-    LEFT JOIN songdescription 
+    INNER JOIN songdescription 
     ON songsdata.id = songdescription.id
     WHERE songsdata.id = ${id};`
 },
