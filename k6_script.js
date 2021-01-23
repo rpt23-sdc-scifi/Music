@@ -7,35 +7,28 @@ import { sleep } from 'k6';
 let errorRate = new Rate ('errorRate');
 
 export let options = {
-//   thresholds : {
-// /* prerequisites requests  1-5 min duration 1 user 
-//    threshold of 90% of requests must be within 500 ms and 99% within 1 min
-//    error rate should be 1 percent over 2 min
-
-  //  'http_req_duration':  ['p(90) < 500', 'p(99) < 1000'],
-  //  'errorRate': [{threshold: 'rate < 0.05', abortOnFail: false, delayAbortEval: '30s'}],
-    
- 
-
-  // scenario1: 
-  //   { executor: 'ramping-vus',duration: '30s', rate: 1, vus: 20 },
-  // scenario2:
-  //   { executor: 'ramping-vus', duration: '60s', rate: 10, vus: 20 },
-  // scenario3:
-  //   { executor: 'ramping-vus',duration: '30s', rate: 50, vus: 5 },
-  // scenario4:
-  //   { executor: 'ramping-vus',duration: '30s', rate: 100, vus: 20 },
-  // scenario5:
-  //   {executor: 'ramping-vus', duration: '30s', rate: 50, vus: 5 },
-  // scenario6:
-  //   {executor: 'ramping-vus', duration: '30s', rate: 10, vus: 1 },
-
-};
+  stages: [
+    { duration: '2m', target: 100 }, 
+    { duration: '5m', target: 100 },
+    { duration: '2m', target: 200 },
+    { duration: '5m', target: 200 },
+    { duration: '2m', target: 300 },
+    { duration: '5m', target: 300 },
+    { duration: '2m', target: 500 }, 
+    { duration: '5m', target: 400 },
+    { duration: '10m', target: 0 }, 
+  ],
+}
 export default function () {
-  let max = 9999998;
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+  let max = 10000;
   let min = 1;
-  let randomId = Math.random() * (max - min) + min;
-  let res = http.get(`http://localhost:3005/api/song/${randomId}`);
+  let randomId = getRandomInt(min, max);
+  let res = http.get(`http://localhost:3005/songdata/${randomId}`);
   
   errorRate.add(res.status != 200);
 
