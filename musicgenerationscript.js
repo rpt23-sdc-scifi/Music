@@ -46,7 +46,7 @@ startWriting(writeStream, 'utf-8', () => {
 
 
 // should initialize stream and with all the above and startwriting
-// node musicgenerationscript.js --lines 10000000 --output musicdescription.csv
+// node musicgenerationscript.js --lines 1000000 --output musicdescription.csv
 
 
 

@@ -43,21 +43,21 @@ class Player extends React.Component {
     // songdata is mine so localhost
     $.ajax({
       type: "GET",
-      url: `http://18.191.184.153:3005/api/song/${this.songId}`,
+      url: `http://18.191.184.153/:3005/api/song/${this.songId}`,
       success: (res) => {
         console.log('3');
         console.log(res.data);
         alert('request created');
         
-        // this.setState({
-        //   currentSong: this.audio = new Howl({
-        //     // the song url is the audio file
-        //     src: [res.url],
-        //     // onplay: () => { requestAnimationFrame(this.frame) }
-        //   }),
-        //   currentPicture: res.image,
-        //   currentSongName: res.name
-        // })
+        this.setState({
+          currentSong: this.audio = new Howl({
+            // the song url is the audio file
+            src: [res.url],
+            // onplay: () => { requestAnimationFrame(this.frame) }
+          }),
+          currentPicture: res.image,
+          currentSongName: res.name
+        })
       }
     })
 
