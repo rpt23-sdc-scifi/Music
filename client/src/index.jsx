@@ -43,7 +43,7 @@ class Player extends React.Component {
     // songdata is mine so localhost
     $.ajax({
       type: "GET",
-      url: `http://13.58.91.63:3005/api/song/${this.songId}`,
+      url: `http://18.191.184.153:3005/api/song/${this.songId}`,
       success: (res) => {
         console.log('3');
         console.log(res.data);
