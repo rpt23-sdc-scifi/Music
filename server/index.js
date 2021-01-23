@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const cors = require('cors');
 const expressStaticGzip = require('express-static-gzip');
-const port = 3000;
+const port = 3005;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 const client = path.join(__dirname, '/../client');
