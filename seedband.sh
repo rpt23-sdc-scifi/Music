@@ -18,7 +18,7 @@ IDS="(band_id,name)"
 OUTPUT="banddata.csv"
 FILEPATH="$DIR/$OUTPUT"
 # if parameter 1 is not passed as argument default records to be generated to 10000000
-LINES=${1:-1000000}
+LINES=${1:-100000}
 
 ### Import Our Database ###
 # Dont specify a database since CREATE DATABASE is in schema.sql

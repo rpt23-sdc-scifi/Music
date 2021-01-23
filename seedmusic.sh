@@ -21,7 +21,7 @@ SONGDATA="musicdata.csv"
 FILEPATH1="$DIR/$SONGDESCRIPTION"
 FILEPATH2="$DIR/$SONGDATA"
 # if parameter 1 is not passed as argument default records to be generated to 10000000
-LINES=${1:-10000000}
+LINES=${1:-1000000}
 
 
 ### Run Our Generator Script ###
