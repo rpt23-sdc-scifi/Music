@@ -10,7 +10,7 @@ const expressStaticGzip = require('express-static-gzip');
 const port = 3005;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-const client = path.join(__dirname, '/../client');
+const client = path.join(__dirname, '../client');
 app.use('/', expressStaticGzip(client, {
   enableBrotli: true,
    orderPreference: ['br', 'gz'],
@@ -18,14 +18,18 @@ app.use('/', expressStaticGzip(client, {
       res.setHeader("Cache-Control", "public, max-age=31536000");
    }
 }))
-const router = require('./routes.js');
-app.use('/api', router);
 
 app.use(cors());
 
+const router = require('./routes.js');
+app.use('/', router);
+
 app.get('/:current', (req, res) => {
+  console.log('sending file')
   res.sendFile(path.join(__dirname, '../client/index.html'));
 })
+
+
 
 app.listen(port, () => {
   console.log('Server is listening at http://localhost:' + port)

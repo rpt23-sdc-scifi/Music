@@ -5,10 +5,10 @@
 const router = require ('express').Router();
 const controller = require('./controller.js');
 
-router.get('/song/:id', controller.songs);
-router.put('/song/:id', controller.update);
-router.post('/song/new', controller.insert);
-router.delete('/song/:id', controller.deleter);
-router.get('/band/:band_id', controller.band);
+router.get('/songdata/:id', controller.songs);
+router.put('/songdata/:id', controller.update);
+router.post('/songdata/new', controller.insert);
+router.delete('/songdata/:id', controller.deleter);
+router.get('/banddata/:band_id', controller.band);
 
 module.exports = router;
