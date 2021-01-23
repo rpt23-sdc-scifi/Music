@@ -46,7 +46,7 @@ class Player extends React.Component {
       url: `http://18.191.184.153/:3005/api/song/${this.songId}`,
       success: (res) => {
         console.log('3');
-        console.log(res.data);
+        console.log(res);
         alert('request created');
         
         this.setState({
