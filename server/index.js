@@ -29,7 +29,10 @@ app.get('/:current', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/index.html'));
 })
 
-
+app.get('/loaderio-3a206b489794b720370641fdd0d3471e/', (req, res) => {
+  console.log('sending file loaderfile')
+  res.sendFile(path.join(__dirname, '../loaderio-3a206b489794b720370641fdd0d3471e.txt'));
+})
 
 app.listen(port, () => {
   console.log('Server is listening at http://localhost:' + port)
