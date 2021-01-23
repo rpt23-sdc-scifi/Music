@@ -23,7 +23,7 @@ app.use('/api', router);
 
 app.use(cors());
 
-app.get('*', (req, res) => {
+app.get('/:current', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/index.html'));
 })
 

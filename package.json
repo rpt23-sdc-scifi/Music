@@ -14,8 +14,9 @@
     "Pbuild": "webpack --mode=production -d --watch",
     "test": "mocha",
     "jest": "jest",
-    "band": "bash seedband.sh 1000000",
-    "music": "bash seedmusic.sh 10000000",
+    "band": "bash seedband.sh 100000",
+    "data": "bash seeddata.sh 1000000",
+    "music": "bash seedmusic.sh 1000000",
     "stress-test": "bash stresstest.sh"
   },
   "dependencies": {
