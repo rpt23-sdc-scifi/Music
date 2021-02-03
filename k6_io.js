@@ -31,7 +31,7 @@ export default function () {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-  let max = 100000;
+  let max = 1000;
   let min = 1;
   let randomId = getRandomInt(min, max);
   let res = http.get(`http://18.191.184.153:3005/songdata/${randomId}`);
