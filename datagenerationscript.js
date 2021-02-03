@@ -3,7 +3,7 @@ const faker = require('faker')
 const argv = require('yargs').argv
 
 
-const lines = argv.lines || 10000000
+const lines = argv.lines || 1000000
 const filename = argv.output || 'musicdata.csv'
 const writeStream = fs.createWriteStream(filename)
 
