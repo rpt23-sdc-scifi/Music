@@ -34,7 +34,7 @@ export default function () {
   let max = 100000;
   let min = 1;
   let randomId = getRandomInt(min, max);
-  let res = http.get(`http://http://18.191.184.153:3005/songdata/${randomId}`);
+  let res = http.get(`http://18.191.184.153:3005/songdata/${randomId}`);
   
   errorRate.add(res.status != 200);
 
