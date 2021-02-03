@@ -21,19 +21,19 @@ const client = new Client(
 );
 
 const findSong = async (id) => {
-     const redisSong = await redisclient.get(id)
-     if (redisSong !== null) {
-        return JSON.parse(redisSong)
-     } else {
+    //  const redisSong = await redisclient.get(id)
+    //  if (redisSong !== null) {
+    //     return JSON.parse(redisSong)
+    //  } else {
         try {
 
             
             const Song = await client.query(helper.GetSong(id))
             // console.log(JSON.stringify(Song.rows[0]))
-            const cache = await redisclient.set(id, `${JSON.stringify(Song.rows[0])}`);
-            console.log(`Cached: ${cache}`);
+            // const cache = await redisclient.set(id, `${JSON.stringify(Song.rows[0])}`);
+            // console.log(`Cached: ${cache}`);
             
-            // console.log(Song.rows[0])
+            // // console.log(Song.rows[0])
             return Song.rows[0]
             }
         
@@ -43,7 +43,7 @@ const findSong = async (id) => {
 
      }
       
-        }
+        // }
     
     
 
