@@ -15,6 +15,14 @@ export let options = {
     { duration: '30s', target: 50 },
     { duration: '30s', target: 0 }, 
   ],
+  ext: {
+    loadimpact: {
+      distribution: {
+        "amazon:us:ashburn": { loadZone: "amazon:us:ashburn", percent: 100 },
+      },
+    },
+  },
+  
 }
 
 export default function () {
