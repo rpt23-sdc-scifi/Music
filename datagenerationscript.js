@@ -12,7 +12,7 @@ const createPost = (i) => {
   const id = i
   const url = faker.internet.url()
   const image = faker.image.imageUrl(faker.random.number(100000))
-  const band_id =faker.random.number(999999)
+  const band_id =faker.random.number(9999)
   return `${id},${url},${image},${band_id}\n`
 }
 const startWriting = (writeStream, encoding, done) => {
